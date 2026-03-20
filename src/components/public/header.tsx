@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/public/theme-toggle";
-import { useTheme } from "next-themes";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -24,12 +22,6 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,9 +31,9 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // On homepage, before scrolling, use white text in light mode
+  // On homepage, before scrolling, use white text
   const isHomepage = pathname === "/";
-  const useWhiteText = mounted && isHomepage && !scrolled && resolvedTheme === "light";
+  const useWhiteText = isHomepage && !scrolled;
 
   return (
     <header
@@ -91,7 +83,6 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex lg:items-center lg:gap-3">
-            <ThemeToggle />
             <Link href="/login">
               <Button variant="ghost" size="sm" className={useWhiteText ? "text-white hover:bg-white/10" : "text-text-secondary"}>
                 Sign In
@@ -104,7 +95,6 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
