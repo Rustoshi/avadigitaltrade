@@ -95,7 +95,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             <Link href="/login">
               <Button 
                 size="sm" 
-                className="bg-[#1a1a1f] dark:bg-[#0c0c0f] hover:bg-[#252529] dark:hover:bg-[#141419] border border-white/10 text-white font-medium shadow-sm"
+                className="bg-slate-800 hover:bg-slate-900 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm"
               >
                 Sign In
               </Button>
@@ -135,7 +135,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             mobileMenuOpen ? "max-h-96 pb-4" : "max-h-0"
           )}
         >
-          <nav className="flex flex-col gap-1 pt-2">
+          <nav className="flex flex-col gap-1 pt-2 bg-surface/95 backdrop-blur-sm border-t border-border rounded-b-lg">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -153,7 +153,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             ))}
             <div className="mt-3 flex flex-col gap-2 px-4">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-[#1a1a1f] dark:bg-[#0c0c0f] hover:bg-[#252529] dark:hover:bg-[#141419] border border-white/10 text-white font-medium shadow-sm">
+                <Button className="w-full bg-slate-800 hover:bg-slate-900 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm">
                   Sign In
                 </Button>
               </Link>
