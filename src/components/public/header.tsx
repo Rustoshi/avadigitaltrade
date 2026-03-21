@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/public/theme-toggle";
+import { useTheme } from "next-themes";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -22,6 +24,12 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,9 +39,9 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // On homepage, before scrolling, use white text
+  // On homepage, before scrolling, use white text in light mode
   const isHomepage = pathname === "/";
-  const useWhiteText = isHomepage && !scrolled;
+  const useWhiteText = mounted && isHomepage && !scrolled && resolvedTheme === "light";
 
   return (
     <header
@@ -83,8 +91,12 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex lg:items-center lg:gap-3">
+            <ThemeToggle />
             <Link href="/login">
-              <Button variant="ghost" size="sm" className={useWhiteText ? "text-white hover:bg-white/10" : "text-text-secondary"}>
+              <Button 
+                size="sm" 
+                className="bg-[#1a1a1f] dark:bg-[#0c0c0f] hover:bg-[#252529] dark:hover:bg-[#141419] border border-white/10 text-white font-medium shadow-sm"
+              >
                 Sign In
               </Button>
             </Link>
@@ -95,6 +107,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -140,7 +153,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             ))}
             <div className="mt-3 flex flex-col gap-2 px-4">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full">
+                <Button className="w-full bg-[#1a1a1f] dark:bg-[#0c0c0f] hover:bg-[#252529] dark:hover:bg-[#141419] border border-white/10 text-white font-medium shadow-sm">
                   Sign In
                 </Button>
               </Link>

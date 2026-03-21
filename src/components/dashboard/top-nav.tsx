@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/dashboard/theme-toggle";
 import { useUserSession } from "@/components/providers/user-session-provider";
 import { userMenuItems } from "./nav-config";
 
@@ -99,6 +100,9 @@ export function TopNav({ siteName, onMenuClick }: TopNavProps) {
           <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-error ring-2 ring-surface" />
         </Button>
 
+        {/* Theme toggle */}
+        <ThemeToggle />
+
         {/* User dropdown */}
         {mounted ? (
           <DropdownMenu>
@@ -117,7 +121,7 @@ export function TopNav({ siteName, onMenuClick }: TopNavProps) {
             </DropdownMenuTrigger>
             <DropdownMenuContent 
               align="end" 
-              className="w-60 rounded-xl border-white/10 bg-surface/95 backdrop-blur-xl shadow-xl"
+              className="w-60 rounded-xl border-border bg-[#1a1a1f] dark:bg-[#0c0c0f] backdrop-blur-xl shadow-2xl"
             >
               <DropdownMenuLabel className="p-4">
                 <div className="flex items-center gap-3">
@@ -127,16 +131,16 @@ export function TopNav({ siteName, onMenuClick }: TopNavProps) {
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col">
-                    <p className="text-sm font-semibold text-text-primary">{userName}</p>
-                    <p className="text-xs text-text-muted truncate">{userEmail}</p>
+                    <p className="text-sm font-semibold text-white">{userName}</p>
+                    <p className="text-xs text-gray-400 truncate">{userEmail}</p>
                   </div>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-white/5" />
               {userMenuItems.map((item) => (
                 <DropdownMenuItem key={item.href} asChild className="rounded-lg mx-2 my-0.5">
-                  <Link href={item.href} className="flex items-center gap-3 cursor-pointer px-3 py-2.5">
-                    <item.icon className="h-4 w-4 text-text-muted" />
+                  <Link href={item.href} className="flex items-center gap-3 cursor-pointer px-3 py-2.5 text-gray-200 hover:text-white">
+                    <item.icon className="h-4 w-4 text-gray-400" />
                     <span>{item.title}</span>
                   </Link>
                 </DropdownMenuItem>

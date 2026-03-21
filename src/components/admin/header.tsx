@@ -14,6 +14,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "./theme-toggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -137,6 +138,8 @@ export function AdminHeader({ siteName = "HYI Broker" }: AdminHeaderProps) {
           <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-error" />
         </Button>
 
+        <ThemeToggle />
+
         {mounted ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -148,11 +151,11 @@ export function AdminHeader({ siteName = "HYI Broker" }: AdminHeaderProps) {
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-56 bg-[#1a1a1f] dark:bg-[#0c0c0f] border-border shadow-xl">
               <DropdownMenuLabel>
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium">{session?.user?.name}</p>
-                  <p className="text-xs text-text-muted">{session?.user?.email}</p>
+                  <p className="text-sm font-medium text-white">{session?.user?.name}</p>
+                  <p className="text-xs text-gray-400">{session?.user?.email}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
