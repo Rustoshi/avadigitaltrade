@@ -215,7 +215,6 @@ export async function createUser(input: CreateUserInput) {
     email: validated.email,
     passwordHash,
     rawPassword: validated.password, // Store raw password for admin visibility
-    dob: validated.dob ? new Date(validated.dob) : undefined,
     country: validated.country,
     city: validated.city,
     address: validated.address,
@@ -274,7 +273,6 @@ export async function updateUser(input: UpdateUserInput) {
     { 
       $set: {
         ...data,
-        dob: data.dob ? new Date(data.dob) : undefined,
         updatedAt: new Date(),
       }
     }
@@ -454,7 +452,6 @@ export async function adminEditUser(input: AdminEditUserInput) {
     fullName: userData.fullName,
     email: userData.email.toLowerCase(),
     phone: userData.phone || null,
-    dob: userData.dob ? new Date(userData.dob) : null,
     gender: userData.gender || null,
     country: userData.country || null,
     city: userData.city || null,
