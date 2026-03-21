@@ -93,10 +93,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
           <div className="hidden lg:flex lg:items-center lg:gap-3">
             <ThemeToggle />
             <Link href="/login">
-              <Button 
-                size="sm" 
-                className="bg-slate-900 hover:bg-slate-800 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm"
-              >
+              <Button variant="dark" size="sm">
                 Sign In
               </Button>
             </Link>
@@ -153,7 +150,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             ))}
             <div className="mt-2 pt-3 border-t border-border flex flex-col gap-3 px-2">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm h-11">
+                <Button variant="dark" className="w-full h-11">
                   Sign In
                 </Button>
               </Link>
