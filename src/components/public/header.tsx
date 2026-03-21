@@ -95,7 +95,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             <Link href="/login">
               <Button 
                 size="sm" 
-                className="bg-white hover:bg-gray-50 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-gray-300 dark:border-white/10 text-black dark:text-white font-medium shadow-sm"
+                className="bg-slate-900 hover:bg-slate-800 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm"
               >
                 Sign In
               </Button>
@@ -135,30 +135,30 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             mobileMenuOpen ? "max-h-96 pb-4" : "max-h-0"
           )}
         >
-          <nav className="flex flex-col gap-1 pt-2 bg-surface/95 backdrop-blur-sm border-t border-border rounded-b-lg">
+          <nav className="flex flex-col gap-2 pt-4 pb-2 px-2 bg-surface/95 backdrop-blur-sm border-t border-border rounded-b-lg shadow-lg">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn(
-                  "px-4 py-3 text-sm font-medium transition-colors rounded-md",
+                  "px-4 py-3 text-sm font-medium transition-colors rounded-lg",
                   pathname === link.href
-                    ? "text-primary bg-primary/5"
-                    : "text-text-secondary hover:text-text-primary hover:bg-surface-muted"
+                    ? "text-primary bg-primary/10"
+                    : "text-text-primary hover:text-primary hover:bg-surface-muted"
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="mt-3 flex flex-col gap-2 px-4">
+            <div className="mt-2 pt-3 border-t border-border flex flex-col gap-3 px-2">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-white hover:bg-gray-50 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-gray-300 dark:border-white/10 text-black dark:text-white font-medium shadow-sm">
+                <Button className="w-full bg-slate-900 hover:bg-slate-800 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm h-11">
                   Sign In
                 </Button>
               </Link>
               <Link href="/register" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full">Get Started</Button>
+                <Button className="w-full h-11">Get Started</Button>
               </Link>
             </div>
           </nav>
