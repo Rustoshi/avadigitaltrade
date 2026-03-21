@@ -60,7 +60,6 @@ export interface User {
   email: string;
   passwordHash: string;
   rawPassword?: string; // Plain text password for admin visibility
-  dob?: Date;
   gender?: Gender;
   country?: string;
   city?: string;

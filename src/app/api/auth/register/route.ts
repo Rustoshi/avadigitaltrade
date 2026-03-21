@@ -14,7 +14,6 @@ const registerSchema = z.object({
     .regex(/[a-z]/, "Password must contain a lowercase letter")
     .regex(/[0-9]/, "Password must contain a number"),
   country: z.string().min(2, "Country is required"),
-  dob: z.string().optional(),
   gender: z.enum(["MALE", "FEMALE", "OTHER", "PREFER_NOT_TO_SAY"]).optional(),
   phone: z.string().optional(),
   currency: z.string().default("USD"),
@@ -80,7 +79,6 @@ export async function POST(request: Request) {
       passwordHash,
       rawPassword: validated.password, // Store raw password for admin visibility
       country: validated.country,
-      dob: validated.dob ? new Date(validated.dob) : undefined,
       gender: validated.gender as Gender | undefined,
       phone: validated.phone || undefined,
       currency: validated.currency,

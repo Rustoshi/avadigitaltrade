@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Mail, Phone, MapPin } from "lucide-react";
+
 const footerLinks = {
   company: [
     { href: "/about", label: "About Us" },
@@ -19,9 +21,14 @@ const footerLinks = {
 
 interface PublicFooterProps {
   siteName: string;
+  settings?: {
+    supportEmail?: string;
+    supportPhone?: string;
+    address?: string;
+  };
 }
 
-export function PublicFooter({ siteName }: PublicFooterProps) {
+export function PublicFooter({ siteName, settings }: PublicFooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -97,6 +104,37 @@ export function PublicFooter({ siteName }: PublicFooterProps) {
                 ))}
               </ul>
             </div>
+
+            {/* Contact Information */}
+            {settings && (
+              <div>
+                <h3 className="text-sm font-semibold text-text-primary">Contact</h3>
+                <ul className="mt-4 space-y-3">
+                  {settings.supportEmail && (
+                    <li className="flex items-start gap-2 text-sm text-text-secondary">
+                      <Mail className="h-4 w-4 mt-0.5 shrink-0" />
+                      <a href={`mailto:${settings.supportEmail}`} className="hover:text-text-primary transition-colors">
+                        {settings.supportEmail}
+                      </a>
+                    </li>
+                  )}
+                  {settings.supportPhone && (
+                    <li className="flex items-start gap-2 text-sm text-text-secondary">
+                      <Phone className="h-4 w-4 mt-0.5 shrink-0" />
+                      <a href={`tel:${settings.supportPhone.replace(/[^+\d]/g, '')}`} className="hover:text-text-primary transition-colors">
+                        {settings.supportPhone}
+                      </a>
+                    </li>
+                  )}
+                  {settings.address && (
+                    <li className="flex items-start gap-2 text-sm text-text-secondary">
+                      <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+                      <span>{settings.address}</span>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
 

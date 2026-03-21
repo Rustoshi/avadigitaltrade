@@ -95,7 +95,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             <Link href="/login">
               <Button 
                 size="sm" 
-                className="bg-slate-800 hover:bg-slate-900 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm"
+                className="bg-white hover:bg-gray-50 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-gray-300 dark:border-white/10 text-black dark:text-white font-medium shadow-sm"
               >
                 Sign In
               </Button>
@@ -153,7 +153,7 @@ export function PublicHeader({ siteName }: PublicHeaderProps) {
             ))}
             <div className="mt-3 flex flex-col gap-2 px-4">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-slate-800 hover:bg-slate-900 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-slate-700 dark:border-white/10 text-white font-medium shadow-sm">
+                <Button className="w-full bg-white hover:bg-gray-50 dark:bg-[#0c0c0f] dark:hover:bg-[#141419] border border-gray-300 dark:border-white/10 text-black dark:text-white font-medium shadow-sm">
                   Sign In
                 </Button>
               </Link>

@@ -45,7 +45,6 @@ interface UserEditFormProps {
     email: string;
     rawPassword?: string | null;
     phone?: string | null;
-    dob?: Date | null;
     gender?: string | null;
     country?: string | null;
     city?: string | null;
@@ -113,7 +112,6 @@ export function UserEditForm({ user }: UserEditFormProps) {
       email: user.email,
       rawPassword: user.rawPassword || "",
       phone: user.phone || "",
-      dob: user.dob ? format(new Date(user.dob), "yyyy-MM-dd") : "",
       gender: (user.gender as "MALE" | "FEMALE" | "OTHER" | "PREFER_NOT_TO_SAY") || undefined,
       country: user.country || "",
       city: user.city || "",
@@ -224,19 +222,6 @@ export function UserEditForm({ user }: UserEditFormProps) {
                     <FormLabel className="text-text-secondary">Phone</FormLabel>
                     <FormControl>
                       <Input className="border-border-default bg-surface" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="dob"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-text-secondary">Date of Birth</FormLabel>
-                    <FormControl>
-                      <Input type="date" className="border-border-default bg-surface" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

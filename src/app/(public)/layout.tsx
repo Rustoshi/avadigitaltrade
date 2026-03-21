@@ -15,7 +15,7 @@ export default async function PublicLayout({
     <div className="flex min-h-screen flex-col">
       <PublicHeader siteName={settings.siteName} />
       <main className="flex-1">{children}</main>
-      <PublicFooter siteName={settings.siteName} />
+      <PublicFooter siteName={settings.siteName} settings={settings} />
     </div>
   );
 }

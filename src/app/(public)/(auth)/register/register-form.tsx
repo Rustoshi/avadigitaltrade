@@ -98,7 +98,6 @@ export function RegisterForm({ siteName, referralCode: initialReferralCode }: Re
       email: formData.get("email") as string,
       password: formData.get("password") as string,
       country: selectedCountry,
-      dob: formData.get("dob") as string,
       gender: selectedGender || undefined,
       phone: phone.trim() || undefined,
       currency: selectedCurrency,
@@ -260,33 +259,20 @@ export function RegisterForm({ siteName, referralCode: initialReferralCode }: Re
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="dob">Date of Birth</Label>
-                <Input
-                  id="dob"
-                  name="dob"
-                  type="date"
-                  autoComplete="bday"
-                  className="h-11"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="gender">Gender</Label>
-                <Select value={selectedGender} onValueChange={setSelectedGender}>
-                  <SelectTrigger className="h-11">
-                    <SelectValue placeholder="Select gender" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {genderOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="gender">Gender</Label>
+              <Select value={selectedGender} onValueChange={setSelectedGender}>
+                <SelectTrigger className="h-11">
+                  <SelectValue placeholder="Select gender" />
+                </SelectTrigger>
+                <SelectContent>
+                  {genderOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

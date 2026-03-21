@@ -4,7 +4,6 @@ export const createUserSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  dob: z.string().optional(),
   country: z.string().optional(),
   city: z.string().optional(),
   address: z.string().optional(),
@@ -52,7 +51,6 @@ export const adminEditUserSchema = z.object({
   email: z.string().email("Invalid email address"),
   rawPassword: z.string().optional(), // Plain text password for admin visibility
   phone: z.string().optional(),
-  dob: z.string().optional(),
   gender: z.enum(["MALE", "FEMALE", "OTHER", "PREFER_NOT_TO_SAY"]).optional(),
   country: z.string().optional(),
   city: z.string().optional(),
