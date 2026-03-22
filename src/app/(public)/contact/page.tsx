@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MapPin, Phone, Clock, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, MapPin, Clock, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,12 +12,6 @@ const contactInfo = [
     title: "Email",
     value: "support@standardbroker.com",
     description: "We respond within 24 hours",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    value: "+1 (555) 123-4567",
-    description: "Mon-Fri, 9am-6pm EST",
   },
   {
     icon: MapPin,

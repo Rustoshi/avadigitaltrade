@@ -14,7 +14,6 @@ import {
   Heart,
   Zap,
   Mail,
-  Phone,
   MapPin,
   MessageSquare,
   AlertTriangle,
@@ -46,7 +45,6 @@ import type { PublicInvestmentPlan } from "@/lib/actions/public";
 interface AppSettings {
   siteName: string;
   supportEmail: string;
-  supportPhone: string;
   address: string;
 }
 
@@ -895,21 +893,6 @@ export function HomepageContent({ settings, plans }: HomepageContentProps) {
                         <a href={`mailto:${settings.supportEmail}`} className="text-text-secondary hover:text-primary transition-colors">
                           {settings.supportEmail}
                         </a>
-                      </div>
-                    </div>
-                  </ScaleOnHover>
-                  
-                  <ScaleOnHover>
-                    <div className="flex items-start gap-4 p-4 rounded-xl border border-border bg-surface">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                        <Phone className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-text-primary">Phone</p>
-                        <a href={`tel:${settings.supportPhone.replace(/[^+\d]/g, '')}`} className="text-text-secondary hover:text-primary transition-colors">
-                          {settings.supportPhone}
-                        </a>
-                        <p className="text-sm text-text-muted">Mon-Fri, 9am-6pm EST</p>
                       </div>
                     </div>
                   </ScaleOnHover>
